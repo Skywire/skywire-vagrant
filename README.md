@@ -32,6 +32,7 @@ You may be asked to enter the admin credentials for you computer so it can write
 
 * Configure Puppet by updating variables in `puppet/manifests/site.pp` such as `$phpVersion` and `$hostName`
 * Ensure that the `config.vm.host_name` in `Vagrantfile` matches `$hostName` in `puppet/manifests/site.pp`
+* The format of the hostname should match the live site but with a subdomain of 'vagrant' e.g. `vagrant.duchamplondon.com`
 
 ## XDebug
 
