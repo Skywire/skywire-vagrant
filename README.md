@@ -72,6 +72,10 @@ Full list via `vagrant --help`. For help on any individual command run `vagrant 
 * `vagrant ssh` - connects to machine via SSH
 * `vagrant halt` - stops the vagrant machine
 
+## Useful Tools
+
+You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI that works on OSX and Windows.
+
 ## Possible Future Features
 
 * separation of concerns - pull in configs e.g. bash from external repos
