@@ -14,11 +14,11 @@ Download/Update Vagrant from: http://www.vagrantup.com/downloads
 
 Download/Update Virtualbox from: https://www.virtualbox.org/wiki/Downloads
 
-Install the [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater):
+Install the [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater) which will auto add the Vagrant box's defined hostname and IP to your hosts file and remove it again when needed.:
 
 `vagrant plugin install vagrant-hostsupdater`
 
-This plugin will auto add the Vagrant box's defined hostname and IP to your hosts file and remove it again when needed.
+Ignore `/.vagrant` in your projects `.gitignore`.
 
 ## Running
 
