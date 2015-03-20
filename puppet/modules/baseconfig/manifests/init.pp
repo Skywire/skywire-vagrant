@@ -26,11 +26,6 @@ class baseconfig {
             enabled     => 1,
             gpgcheck    => 0;
 
-        "remi":
-            mirrorlist  => "http://rpms.famillecollet.com/enterprise/6/remi/mirror",
-            descr       => "Les RPM de remi pour Enterprise Linux 6 - \$basearch",
-            enabled     => 1,
-            gpgcheck    => 0;
     }
 
     file {
