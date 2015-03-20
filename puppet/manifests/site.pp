@@ -1,5 +1,5 @@
 # Configuration
-$hostName = "vagrant.site"
+$hostName = "vagrant.site" # e.g. vagrant.duchamplondon (also update this in Vagrantfile)
 $databaseName = "vagrant"
 $phpstormServerName = "Vagrant"
 $phpVersion = "55" # set to 53, 54, 55, 56
