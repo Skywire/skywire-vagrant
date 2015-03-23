@@ -52,13 +52,11 @@ class php {
 
     package {
         [
-            #"php$phpVersion",
             "php$phpMid-devel",
             "php$phpMid-cli",
             "php$phpMid-fpm",
             "php$phpMid-pdo",
             "php$phpMid-gd",
-            #"php$phpMid-pecl-jsonc-devel",
             "php$phpMid-process",
             "php$phpMid-opcache",
             "php$phpMid-pecl-zip",
@@ -66,7 +64,6 @@ class php {
             "php$phpMid-xml",
             "php$phpMid-pecl-memcache",
             "php$phpMid-common",
-            #"php$phpMid-mysqlnd",
             "php$phpMid-mbstring",
             "php$phpMid-soap",
             "php$phpMid-pear",
@@ -80,19 +77,41 @@ class php {
                 ];
     }
 
+    if($phpVersion == '53'){
+       package {
+           [
+               "php$phpMid-pdo_mysql"
+           ]:
+               ensure  => present,
+               require =>
+                   [
+                       Package["php$phpMid-devel"]
+                   ];
+       }
+    } else {
+        package {
+            [
+                "php$phpMid-mysqlnd"
+            ]:
+                ensure  => present,
+                require =>
+                    [
+                        Package["php$phpMid-devel"]
+                    ];
+        }
+    }
+
     #enabled from start up and ensure running
     service {
         "php$phpMid-fpm":
             enable => true,
             ensure => "running",
             require => Package[
-                #"php$phpVersion",
                 "php$phpMid-devel",
                 "php$phpMid-cli",
                 "php$phpMid-fpm",
                 "php$phpMid-pdo",
                 "php$phpMid-gd",
-                #"php$phpMid-pecl-jsonc-devel",
                 "php$phpMid-process",
                 "php$phpMid-opcache",
                 "php$phpMid-pecl-zip",
@@ -100,7 +119,6 @@ class php {
                 "php$phpMid-xml",
                 "php$phpMid-pecl-memcache",
                 "php$phpMid-common",
-                #"php$phpMid-mysqlnd",
                 "php$phpMid-mbstring",
                 "php$phpMid-soap",
                 "php$phpMid-pear",
