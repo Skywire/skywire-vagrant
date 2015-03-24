@@ -83,3 +83,5 @@ You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI 
 * add http://xhprof.io/ (see https://github.com/mikewhitby/magento-ansible)
 * add Composer
 * add Mailcatcher
+* add Vanish
+* add IonCube
