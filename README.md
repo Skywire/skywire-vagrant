@@ -86,3 +86,4 @@ You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI 
 * add Vanish
 * add IonCube
 * add PageSpeed
+* add ElasticSearch
