@@ -85,3 +85,4 @@ You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI 
 * add Mailcatcher
 * add Vanish
 * add IonCube
+* add PageSpeed
