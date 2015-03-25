@@ -50,6 +50,8 @@ To debug a command line script, run it as normal in the command line with PhpSto
 
 #### SSH
 
+This can be retrieved by running `vagrant ssh-config` from the host machine.
+
 * Host: vagrant.site
 * Port: 22
 * Username: vagrant
