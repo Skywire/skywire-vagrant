@@ -20,6 +20,12 @@ Install the [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupd
 
 Ignore `/.vagrant` in your projects `.gitignore`.
 
+## Configuration
+
+* Configure Puppet by updating variables in `puppet/manifests/site.pp` such as `$phpVersion` and `$hostName`
+* Ensure that the `config.vm.host_name` in `Vagrantfile` matches `$hostName` in `puppet/manifests/site.pp`
+* The format of the hostname should match the live site but with a subdomain of 'vagrant' e.g. `vagrant.duchamplondon.com`
+
 ## Running
 
 You can start the Vagrant box via:
@@ -27,12 +33,6 @@ You can start the Vagrant box via:
 `vagrant up`
 
 You may be asked to enter the admin credentials for you computer so it can write to the hosts file.
-
-## Configuration
-
-* Configure Puppet by updating variables in `puppet/manifests/site.pp` such as `$phpVersion` and `$hostName`
-* Ensure that the `config.vm.host_name` in `Vagrantfile` matches `$hostName` in `puppet/manifests/site.pp`
-* The format of the hostname should match the live site but with a subdomain of 'vagrant' e.g. `vagrant.duchamplondon.com`
 
 ## XDebug
 
