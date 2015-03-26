@@ -21,19 +21,78 @@ class php {
                 mirrorlist  => "http://rpms.famillecollet.com/enterprise/6/remi/mirror",
                 descr       => "Les RPM de remi pour Enterprise Linux 6 - \$basearch",
                 enabled     => 1,
-                gpgcheck    => 0;
+                gpgcheck    => 0,
+                before      => Package[
+                    "php$phpMid-devel",
+                    "php$phpMid-cli",
+                    "php$phpMid-fpm",
+                    "php$phpMid-pdo",
+                    "php$phpMid-gd",
+                    "php$phpMid-process",
+                    "php$phpMid-opcache",
+                    "php$phpMid-pecl-zip",
+                    "php$phpMid-mcrypt",
+                    "php$phpMid-xml",
+                    "php$phpMid-pecl-memcache",
+                    "php$phpMid-common",
+                    "php$phpMid-mbstring",
+                    "php$phpMid-soap",
+                    "php$phpMid-pecl-xdebug",
+                    "php$phpMid-pecl-imagick"
+                ];
         }
     }
 
     if($phpVersion == '55'){
-        $phpMid = '55-php'
-        $phpFolderStart = "/opt/remi/php55/root"
+        $phpMid = ''
+        $phpFolderStart = ""
         yumrepo {
+            "remi":
+                mirrorlist  => "http://rpms.famillecollet.com/enterprise/6/remi/mirror",
+                descr       => "Les RPM de remi pour Enterprise Linux 6 - \$basearch",
+                enabled     => 1,
+                gpgcheck    => 0,
+                before      => Package[
+                    "php$phpMid-devel",
+                    "php$phpMid-cli",
+                    "php$phpMid-fpm",
+                    "php$phpMid-pdo",
+                    "php$phpMid-gd",
+                    "php$phpMid-process",
+                    "php$phpMid-opcache",
+                    "php$phpMid-pecl-zip",
+                    "php$phpMid-mcrypt",
+                    "php$phpMid-xml",
+                    "php$phpMid-pecl-memcache",
+                    "php$phpMid-common",
+                    "php$phpMid-mbstring",
+                    "php$phpMid-soap",
+                    "php$phpMid-pecl-xdebug",
+                    "php$phpMid-pecl-imagick"
+                ];
             "remi-php55":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php55/mirror",
                 descr      => "Les RPM de remi de PHP 5.5 pour Enterprise Linux 6 - \$basearch",
                 enabled    => 1,
-                gpgcheck   => 0;
+                gpgcheck   => 0,
+                before     => Package[
+                    "php$phpMid-devel",
+                    "php$phpMid-cli",
+                    "php$phpMid-fpm",
+                    "php$phpMid-pdo",
+                    "php$phpMid-gd",
+                    "php$phpMid-process",
+                    "php$phpMid-opcache",
+                    "php$phpMid-pecl-zip",
+                    "php$phpMid-mcrypt",
+                    "php$phpMid-xml",
+                    "php$phpMid-pecl-memcache",
+                    "php$phpMid-common",
+                    "php$phpMid-mbstring",
+                    "php$phpMid-soap",
+                    "php$phpMid-pecl-xdebug",
+                    "php$phpMid-pecl-imagick"
+                ];
 
         }
     }
@@ -42,11 +101,52 @@ class php {
         $phpMid = '56-php'
         $phpFolderStart = "/opt/remi/php56/root"
         yumrepo {
+            "remi":
+                mirrorlist  => "http://rpms.famillecollet.com/enterprise/6/remi/mirror",
+                descr       => "Les RPM de remi pour Enterprise Linux 6 - \$basearch",
+                enabled     => 1,
+                gpgcheck    => 0,
+                before      => Package[
+                    "php$phpMid-devel",
+                    "php$phpMid-cli",
+                    "php$phpMid-fpm",
+                    "php$phpMid-pdo",
+                    "php$phpMid-gd",
+                    "php$phpMid-process",
+                    "php$phpMid-opcache",
+                    "php$phpMid-pecl-zip",
+                    "php$phpMid-mcrypt",
+                    "php$phpMid-xml",
+                    "php$phpMid-pecl-memcache",
+                    "php$phpMid-common",
+                    "php$phpMid-mbstring",
+                    "php$phpMid-soap",
+                    "php$phpMid-pecl-xdebug",
+                    "php$phpMid-pecl-imagick"
+                ];
             "remi-php56":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php56/mirror",
                 descr      => "Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - \$basearch",
                 enabled    => 1,
-                gpgcheck   => 0;
+                gpgcheck   => 0,
+                before     => Package[
+                    "php$phpMid-devel",
+                    "php$phpMid-cli",
+                    "php$phpMid-fpm",
+                    "php$phpMid-pdo",
+                    "php$phpMid-gd",
+                    "php$phpMid-process",
+                    "php$phpMid-opcache",
+                    "php$phpMid-pecl-zip",
+                    "php$phpMid-mcrypt",
+                    "php$phpMid-xml",
+                    "php$phpMid-pecl-memcache",
+                    "php$phpMid-common",
+                    "php$phpMid-mbstring",
+                    "php$phpMid-soap",
+                    "php$phpMid-pecl-xdebug",
+                    "php$phpMid-pecl-imagick"
+                ];
         }
     }
 
@@ -66,7 +166,6 @@ class php {
             "php$phpMid-common",
             "php$phpMid-mbstring",
             "php$phpMid-soap",
-            "php$phpMid-pear",
             "php$phpMid-pecl-xdebug",
             "php$phpMid-pecl-imagick"
         ]:
@@ -121,7 +220,6 @@ class php {
                 "php$phpMid-common",
                 "php$phpMid-mbstring",
                 "php$phpMid-soap",
-                "php$phpMid-pear",
                 "php$phpMid-pecl-xdebug",
                 "php$phpMid-pecl-imagick"
             ]

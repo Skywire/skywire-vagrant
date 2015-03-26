@@ -2,7 +2,7 @@
 $hostName = "vagrant.site" # e.g. vagrant.duchamplondon.com (also update this in Vagrantfile)
 $databaseName = "vagrant"
 $phpstormServerName = "Vagrant"
-$phpVersion = "55" # set to 53, 54, 55, 56
+$phpVersion = "56" # set to 53, 54, 55, 56
 
 # create a new run stage to ensure certain modules are included first
 stage {
