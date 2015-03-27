@@ -38,7 +38,8 @@ class php {
                     "php$phpMid-mbstring",
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
-                    "php$phpMid-pecl-imagick"
+                    "php$phpMid-pecl-imagick",
+                    "php$phpMid-pecl-xhprof"
                 ];
         }
     }
@@ -68,7 +69,8 @@ class php {
                     "php$phpMid-mbstring",
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
-                    "php$phpMid-pecl-imagick"
+                    "php$phpMid-pecl-imagick",
+                    "php$phpMid-pecl-xhprof"
                 ];
             "remi-php55":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php55/mirror",
@@ -91,7 +93,8 @@ class php {
                     "php$phpMid-mbstring",
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
-                    "php$phpMid-pecl-imagick"
+                    "php$phpMid-pecl-imagick",
+                    "php$phpMid-pecl-xhprof"
                 ];
 
         }
@@ -122,7 +125,8 @@ class php {
                     "php$phpMid-mbstring",
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
-                    "php$phpMid-pecl-imagick"
+                    "php$phpMid-pecl-imagick",
+                    "php$phpMid-pecl-xhprof"
                 ];
             "remi-php56":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php56/mirror",
@@ -145,7 +149,8 @@ class php {
                     "php$phpMid-mbstring",
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
-                    "php$phpMid-pecl-imagick"
+                    "php$phpMid-pecl-imagick",
+                    "php$phpMid-pecl-xhprof"
                 ];
         }
     }
@@ -167,7 +172,8 @@ class php {
             "php$phpMid-mbstring",
             "php$phpMid-soap",
             "php$phpMid-pecl-xdebug",
-            "php$phpMid-pecl-imagick"
+            "php$phpMid-pecl-imagick",
+            "php$phpMid-pecl-xhprof"
         ]:
             ensure  => present,
             require =>
@@ -221,17 +227,32 @@ class php {
                 "php$phpMid-mbstring",
                 "php$phpMid-soap",
                 "php$phpMid-pecl-xdebug",
-                "php$phpMid-pecl-imagick"
+                "php$phpMid-pecl-imagick",
+                "php$phpMid-pecl-xhprof"
             ]
     }
 
     file {
         "$phpFolderStart/etc/php.d/skywire_updates.ini":
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0644',
-        require => Package["php$phpMid-devel"],
-        source => 'puppet:///modules/php/skywire_updates.ini';
+            owner  => 'root',
+            group  => 'root',
+            mode   => '0644',
+            require => Package["php$phpMid-devel"],
+            source => 'puppet:///modules/php/skywire_updates.ini';
+    }
+
+
+    ##install composer
+    exec {
+        "Install Composer":
+            command => "curl -sS https://getcomposer.org/installer | php; mv composer.phar /usr/local/bin/composer",
+            cwd => "/root",
+            creates => "/usr/local/bin/composer",
+            path => [
+                "/usr/bin",
+                "/bin"
+            ],
+            require => Package["php$phpMid"]
     }
 
     if($phpVersion != '53') {
