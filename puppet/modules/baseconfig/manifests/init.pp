@@ -40,6 +40,18 @@ class baseconfig {
             group  => 'vagrant',
             mode   => '0644',
             source => 'puppet:///modules/baseconfig/bash_profile';
+
+        '/home/vagrant/.gitconfig':
+            owner  => 'vagrant',
+            group  => 'vagrant',
+            mode   => '0644',
+            source => 'puppet:///modules/baseconfig/gitconfig';
+
+        '/home/vagrant/.gitignore_global':
+            owner  => 'vagrant',
+            group  => 'vagrant',
+            mode   => '0644',
+            source => 'puppet:///modules/baseconfig/gitignore_global';
     }
 
     package {
