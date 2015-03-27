@@ -212,7 +212,7 @@ class php {
                 "/usr/bin",
                 "/bin"
             ],
-            require => Package["php$phpMid"]
+            require => Package["php$phpMid-devel"]
     }
 
     if($phpVersion != '53') {

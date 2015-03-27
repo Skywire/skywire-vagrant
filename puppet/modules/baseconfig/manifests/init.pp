@@ -45,13 +45,15 @@ class baseconfig {
             owner  => 'vagrant',
             group  => 'vagrant',
             mode   => '0644',
-            source => 'puppet:///modules/baseconfig/git/.gitconfig';
+            source => 'puppet:///modules/baseconfig/git/.gitconfig',
+            require => Exec['Update submodules'];
 
         '/home/vagrant/.gitignore_global':
             owner  => 'vagrant',
             group  => 'vagrant',
             mode   => '0644',
-            source => 'puppet:///modules/baseconfig/git/.gitignore_global';
+            source => 'puppet:///modules/baseconfig/git/.gitignore_global',
+            require => Exec['Update submodules'];
     }
 
     package {
@@ -68,19 +70,31 @@ class baseconfig {
                 ];
     }
 
-    exec { "Install n98":
-        command => "wget https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar; chmod +x ./n98-magerun.phar; mv ./n98-magerun.phar /usr/local/bin/",
-        cwd => "/root",
-        creates => "/usr/local/bin/n98-magerun.phar",
-        path => [
-            "/usr/bin",
-            "/bin"
-        ]
+    exec {
+        "Install n98":
+            command => "wget https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar; chmod +x ./n98-magerun.phar; mv ./n98-magerun.phar /usr/local/bin/",
+            cwd => "/root",
+            creates => "/usr/local/bin/n98-magerun.phar",
+            path => [
+                "/usr/bin",
+                "/bin"
+            ]
     }
 
     service {
         "puppet":
             enable => true,
+    }
+
+    exec {
+        "Update submodules":
+            command => "git submodule update --init",
+            cwd => "/vagrant",
+            path => [
+                "/usr/bin",
+                "/bin"
+            ],
+            require => Package["git"]
     }
 
     exec {
