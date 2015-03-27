@@ -4,3 +4,6 @@
 [submodule "puppet/modules/baseconfig/files/bash"]
 	path = puppet/modules/baseconfig/files/bash
 	url = https://github.com/Skywire/Config-files-bash.git
+[submodule "puppet/modules/nginx/files/nginx"]
+	path = puppet/modules/nginx/files/nginx
+	url = https://github.com/Skywire/Config-files-nginx.git

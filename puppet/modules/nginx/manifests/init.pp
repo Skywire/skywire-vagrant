@@ -46,7 +46,7 @@ class nginx {
             owner  => 'root',
             group  => 'root',
             mode   => '0644',
-            source => 'puppet:///modules/nginx/nginx.conf',
+            source => 'puppet:///modules/nginx/nginx/global-for-all-platforms/nginx.conf',
             require => Package['nginx'];
 
         '/etc/nginx/conf':
@@ -58,7 +58,7 @@ class nginx {
             owner  => 'root',
             group  => 'root',
             mode   => '0644',
-            source => 'puppet:///modules/nginx/skywire-enable-maintenance-mode.conf',
+            source => 'puppet:///modules/nginx/nginx/global-for-all-platforms/conf/skywire-enable-maintenance-mode.conf',
             require => [
                 Package['nginx'],
                 File['/etc/nginx/conf']
@@ -68,7 +68,7 @@ class nginx {
             owner  => 'root',
             group  => 'root',
             mode   => '0644',
-            source => 'puppet:///modules/nginx/url-redirects.conf',
+            source => 'puppet:///modules/nginx/nginx/global-for-all-platforms/conf/skywire-url-redirects.conf',
             require => [
                 Package['nginx'],
                 File['/etc/nginx/conf']
@@ -78,7 +78,7 @@ class nginx {
             owner  => 'root',
             group  => 'root',
             mode   => '0644',
-            source => 'puppet:///modules/nginx/template.conf',
+            source => 'puppet:///modules/nginx/nimbus/template.conf',
             require => Package['nginx'];
     }
 
