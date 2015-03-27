@@ -1,3 +1,6 @@
 [submodule "puppet/modules/baseconfig/files/git"]
 	path = puppet/modules/baseconfig/files/git
 	url = https://github.com/Skywire/Config-files-git.git
+[submodule "puppet/modules/baseconfig/files/bash"]
+	path = puppet/modules/baseconfig/files/bash
+	url = https://github.com/Skywire/Config-files-bash.git

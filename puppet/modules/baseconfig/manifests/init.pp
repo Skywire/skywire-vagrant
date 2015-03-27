@@ -33,13 +33,15 @@ class baseconfig {
             owner  => 'root',
             group  => 'root',
             mode   => '0644',
-            source => 'puppet:///modules/baseconfig/bashrc';
+            source => 'puppet:///modules/baseconfig/bash/.bashrc',
+            require => Exec['Update submodules'];
 
         '/home/vagrant/.bash_profile':
             owner  => 'vagrant',
             group  => 'vagrant',
             mode   => '0644',
-            source => 'puppet:///modules/baseconfig/bash_profile';
+            source => 'puppet:///modules/baseconfig/bash/.bash_profile',
+            require => Exec['Update submodules'];
 
         '/home/vagrant/.gitconfig':
             owner  => 'vagrant',
