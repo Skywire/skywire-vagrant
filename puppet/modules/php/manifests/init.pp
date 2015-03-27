@@ -39,7 +39,8 @@ class php {
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
                     "php$phpMid-pecl-imagick",
-                    "php$phpMid-pecl-xhprof"
+                    "php$phpMid-pecl-xhprof",
+                    "php$phpMid-ioncube-loader"
                 ];
         }
     }
@@ -70,7 +71,8 @@ class php {
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
                     "php$phpMid-pecl-imagick",
-                    "php$phpMid-pecl-xhprof"
+                    "php$phpMid-pecl-xhprof",
+                    "php$phpMid-ioncube-loader"
                 ];
             "remi-php55":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php55/mirror",
@@ -94,7 +96,8 @@ class php {
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
                     "php$phpMid-pecl-imagick",
-                    "php$phpMid-pecl-xhprof"
+                    "php$phpMid-pecl-xhprof",
+                    "php$phpMid-ioncube-loader"
                 ];
 
         }
@@ -126,7 +129,8 @@ class php {
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
                     "php$phpMid-pecl-imagick",
-                    "php$phpMid-pecl-xhprof"
+                    "php$phpMid-pecl-xhprof",
+                    "php$phpMid-ioncube-loader"
                 ];
             "remi-php56":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php56/mirror",
@@ -150,7 +154,8 @@ class php {
                     "php$phpMid-soap",
                     "php$phpMid-pecl-xdebug",
                     "php$phpMid-pecl-imagick",
-                    "php$phpMid-pecl-xhprof"
+                    "php$phpMid-pecl-xhprof",
+                    "php$phpMid-ioncube-loader"
                 ];
         }
     }
@@ -173,7 +178,8 @@ class php {
             "php$phpMid-soap",
             "php$phpMid-pecl-xdebug",
             "php$phpMid-pecl-imagick",
-            "php$phpMid-pecl-xhprof"
+            "php$phpMid-pecl-xhprof",
+            "php$phpMid-ioncube-loader"
         ]:
             ensure  => present,
             require =>
@@ -228,7 +234,8 @@ class php {
                 "php$phpMid-soap",
                 "php$phpMid-pecl-xdebug",
                 "php$phpMid-pecl-imagick",
-                "php$phpMid-pecl-xhprof"
+                "php$phpMid-pecl-xhprof",
+                "php$phpMid-ioncube-loader"
             ]
     }
 
