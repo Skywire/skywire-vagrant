@@ -81,11 +81,8 @@ You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI 
 
 ## Possible Future Features
 
-* separation of concerns - pull in configs e.g. bash from external repos
 * add http://xhprof.io/ (see https://github.com/mikewhitby/magento-ansible)
-* add Composer
 * add Mailcatcher
 * add Vanish
-* add IonCube
 * add PageSpeed
 * add ElasticSearch
