@@ -46,7 +46,7 @@ class nginx {
             owner  => 'root',
             group  => 'root',
             mode   => '0644',
-            source => 'puppet:///modules/nginx/nginx/global-for-all-platforms/nginx.conf',
+            source => 'puppet:///modules/nginx/nimbus/nginx.conf',
             require => Package['nginx'];
 
         '/etc/nginx/conf':
