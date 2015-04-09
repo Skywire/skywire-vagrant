@@ -80,11 +80,53 @@ class nginx {
             mode   => '0644',
             source => 'puppet:///modules/nginx/nimbus/template.conf',
             require => Package['nginx'];
+
+        '/etc/nginx/conf.d/xhprof.conf':
+            owner  => 'root',
+            group  => 'root',
+            mode   => '0644',
+            source => 'puppet:///modules/nginx/nimbus/xhprof.conf',
+            require => Package['nginx'];
+
+        '/var/www':
+            owner  => 'root',
+            group  => 'root',
+            recurse => true,
+            ensure => 'directory',
+            before => File['/var/www/xhprof'];
+
+        '/var/www/xhprof':
+            owner  => 'vagrant',
+            group  => 'vagrant',
+            recurse => true,
+            ensure => 'directory',
+            source => 'puppet:///modules/nginx/xhprof',
+            require => Package['nginx'];
+
+        '/var/www/xhprof/xhprof_lib/config.php':
+            owner  => 'vagrant',
+            group  => 'vagrant',
+            source => 'puppet:///modules/nginx/xhprof-local/config.php',
+            require => File['/var/www/xhprof']
     }
 
     exec {
         "sed -i 's/server_name vagrant.site;/server_name $hostName;/g' /etc/nginx/conf.d/template.conf":
             require => File['/etc/nginx/conf.d/template.conf'],
+            path => [
+                "/bin"
+            ],
+            cwd => '/';
+
+        "sed -i 's/server_name vagrant.site;/server_name $hostName;/g' /etc/nginx/conf.d/xhprof.conf":
+            require => File['/etc/nginx/conf.d/xhprof.conf'],
+            path => [
+                "/bin"
+            ],
+            cwd => '/';
+
+        "sed -i 's/vagrant.site;/$hostName;/g' /var/www/xhprof/xhprof_lib/config.php":
+            require => File['/var/www/xhprof/xhprof_lib/config.php'],
             path => [
                 "/bin"
             ],
@@ -101,7 +143,9 @@ class nginx {
                     '/etc/nginx/nginx.conf',
                     '/etc/nginx/conf/skywire-enable-maintenance-mode.conf',
                     '/etc/nginx/conf/url-redirects.conf',
-                    '/etc/nginx/conf.d/template.conf'
+                    '/etc/nginx/conf.d/template.conf',
+                    '/etc/nginx/conf.d/xhprof.conf',
+                    '/var/www/xhprof'
                 ],
                 Exec["create_self_signed_sslcert"]
             ]

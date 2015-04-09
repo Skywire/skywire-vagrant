@@ -49,6 +49,14 @@ class percona {
                 "/usr/bin",
                 "/usr/sbin"
             ],
-            cwd => '/',
+            cwd => '/';
+
+        "mysql -u root -p --execute='CREATE DATABASE IF NOT EXISTS xhprof;'":
+            require => Service['mysql'],
+            path => [
+                "/usr/bin",
+                "/usr/sbin"
+            ],
+            cwd => '/';
     }
 }

@@ -7,3 +7,6 @@
 [submodule "puppet/modules/nginx/files/nginx"]
 	path = puppet/modules/nginx/files/nginx
 	url = git@github.com:Skywire/Config-files-nginx.git
+[submodule "puppet/modules/nginx/files/xhprof"]
+	path = puppet/modules/nginx/files/xhprof
+	url = https://github.com/preinheimer/xhprof.git

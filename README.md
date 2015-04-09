@@ -79,9 +79,15 @@ Full list via `vagrant --help`. For help on any individual command run `vagrant 
 
 You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI that works on OSX and Windows.
 
+## XHProf
+
+Profiling made easy.
+Turn on profiling by adding ?_profile=1 onto a url
+Turn it back off by either closing your browser window, or setting ?_profile=0
+Then head to http://hostname:81 to view your profiles
+
 ## Possible Future Features
 
-* add http://xhprof.io/ (see https://github.com/mikewhitby/magento-ansible)
 * add Mailcatcher
 * add Vanish
 * add PageSpeed
