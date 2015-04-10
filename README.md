@@ -87,6 +87,7 @@ Full list via `vagrant --help`. For help on any individual command run `vagrant 
 * `vagrant reload` - restarts vagrant machine, loads new Vagrantfile configuration
 * `vagrant ssh` - connects to machine via SSH
 * `vagrant halt` - stops the vagrant machine
+* `` - Updates git submodules and pulls latest commits
 
 ## Useful Tools
 

@@ -22,6 +22,7 @@ git pull
 
 echo $'\n** Initialising and getting submodules'
 git submodule update --init
+git submodule foreach git pull origin master
 
 echo $'\n** Type in the FULL PATH to the directory you want to install to WITH trailing slash, don\'t use \'~\' e.g. /Users/tom/sites/harrys/'
 

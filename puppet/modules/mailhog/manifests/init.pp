@@ -21,7 +21,7 @@ class mailhog {
 
     exec {
         "Install mailhog":
-            command => "go get github.com/mailhog/MailHog",
+            command => "bash -c 'export GOPATH=/root/go; go get github.com/mailhog/MailHog'",
             path => [
                 "/bin",
                 "/usr/bin"
@@ -31,7 +31,7 @@ class mailhog {
         "Setting Executable for MailHog executable":
             command => "chmod +x /root/go/bin/MailHog",
             require => Exec[
-            "Install mailhog"
+                "Install mailhog"
             ],
             path => [
                 "/bin",
@@ -54,7 +54,7 @@ class mailhog {
             owner  => 'root',
             group  => 'root',
             mode   => '0655',
-            require => Exec["Install mailhog"],
+            require => Exec["Setting Executable for MailHog executable"],
             source => 'puppet:///modules/mailhog/mailhog.init';
     }
 
