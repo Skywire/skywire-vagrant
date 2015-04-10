@@ -32,4 +32,26 @@ Package {
     allow_virtual => true
 }
 
-include baseconfig, nginx, php, percona, message
+
+
+if($phpVersion == '53'){
+    $phpMid = ""
+    $phpFolderStart = ""
+}
+
+if($phpVersion == '54'){
+    $phpMid = '54-php'
+    $phpFolderStart = "/opt/remi/php54/root"
+}
+
+if($phpVersion == '55'){
+    $phpMid = ''
+    $phpFolderStart = ""
+}
+
+if($phpVersion == '56'){
+    $phpMid = '56-php'
+    $phpFolderStart = "/opt/remi/php56/root"
+}
+
+include baseconfig, nginx, php, percona, message, mailhog

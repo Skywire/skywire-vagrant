@@ -8,19 +8,7 @@ class php {
             loglevel => notice
     }
 
-    if($phpVersion == '53'){
-        $phpMid = ""
-        $phpFolderStart = ""
-    }
-
-    if($phpVersion == '54'){
-        $phpMid = '54-php'
-        $phpFolderStart = "/opt/remi/php54/root"
-    }
-
     if($phpVersion == '55'){
-        $phpMid = ''
-        $phpFolderStart = ""
         yumrepo {
             "remi-php55":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php55/mirror",
@@ -52,8 +40,6 @@ class php {
     }
 
     if($phpVersion == '56'){
-        $phpMid = '56-php'
-        $phpFolderStart = "/opt/remi/php56/root"
         yumrepo {
             "remi-php56":
                 mirrorlist => "http://rpms.famillecollet.com/enterprise/6/php56/mirror",
@@ -229,7 +215,8 @@ class php {
     }
 
     exec {
-        "sed -i 's/user = apache/user = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf":
+        "Updating PHP User":
+            command => "sed -i 's/user = apache/user = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf",
             require => Package["php$phpMid-fpm"],
             path => [
                 "/bin"
@@ -238,7 +225,8 @@ class php {
     }
 
     exec {
-        "sed -i 's/group = apache/group = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf":
+        "Updating PHP Group":
+            command => "sed -i 's/group = apache/group = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf",
             require => Package["php$phpMid-fpm"],
             path => [
                 "/bin"

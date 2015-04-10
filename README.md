@@ -47,6 +47,12 @@ To debug a command line script, run it as normal in the command line with PhpSto
 * Turn off profiling by either closing your browser window or adding `?_profile=0` to the end of a url
 * Then head to port 81 of your site to view your profiles e.g. http://vagrant.duchamplondon.com:81
 
+## MailHog
+
+* Capture email being sent from the server
+* View email in a web interface on port 8025. Eg: http://vagrant.duchamplondon.com:8025
+* Set up MailHog to then send email onwards to actual destination
+
 ## Default Environment Information
 
 ####  Virtual Machine
@@ -88,6 +94,5 @@ You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI 
 
 ## Possible Future Features
 
-* add Mailcatcher
 * add Vanish
 * add ElasticSearch

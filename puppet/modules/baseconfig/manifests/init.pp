@@ -100,7 +100,8 @@ class baseconfig {
     }
 
     exec {
-        "sed -i 's/serverName=Vagrant/serverName=$phpstormServerName/g' /home/vagrant/.bash_profile":
+        "Update xdebug hostname in bash profile":
+            command => "sed -i 's/serverName=Vagrant/serverName=$phpstormServerName/g' /home/vagrant/.bash_profile",
             require => File['/home/vagrant/.bash_profile'],
             path => [
                 "/bin"

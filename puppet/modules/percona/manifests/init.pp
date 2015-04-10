@@ -43,7 +43,8 @@ class percona {
     }
 
     exec {
-        "mysql -u root -p --execute='CREATE DATABASE IF NOT EXISTS ${databaseName};'":
+        "Create Main Database":
+            command => "mysql -u root --execute='CREATE DATABASE IF NOT EXISTS ${databaseName};'",
             require => Service['mysql'],
             path => [
                 "/usr/bin",
@@ -51,12 +52,22 @@ class percona {
             ],
             cwd => '/';
 
-        "mysql -u root -p --execute='CREATE DATABASE IF NOT EXISTS xhprof;'":
+        "Create xhprof Database":
+            command => "mysql -u root --execute='CREATE DATABASE IF NOT EXISTS xhprof;'",
             require => Service['mysql'],
             path => [
                 "/usr/bin",
                 "/usr/sbin"
             ],
             cwd => '/';
-    }
+
+        "Setup xhprof tables":
+            command => "mysql -u root xhprof < /vagrant/puppet/modules/percona/files/xhprof.sql",
+            require => Exec["Create xhprof Database"],
+            path => [
+                "/usr/bin",
+                "/usr/sbin"
+            ],
+            cwd => '/';
+}
 }
