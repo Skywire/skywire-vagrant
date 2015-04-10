@@ -40,6 +40,13 @@ XDebug is enabled. In XDebug, create a remote server to use debugging from. Set 
 
 To debug a command line script, run it as normal in the command line with PhpStorm listening for it.
 
+## XHProf
+
+* Profiling made easy.
+* Turn on profiling by adding `?_profile=1` to the end of a url
+* Turn off profiling by either closing your browser window or adding `?_profile=0` to the end of a url
+* Then head to port 81 of your site to view your profiles e.g. http://vagrant.duchamplondon.com:81
+
 ## Default Environment Information
 
 ####  Virtual Machine
@@ -79,16 +86,8 @@ Full list via `vagrant --help`. For help on any individual command run `vagrant 
 
 You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI that works on OSX and Windows.
 
-## XHProf
-
-Profiling made easy.
-Turn on profiling by adding ?_profile=1 onto a url
-Turn it back off by either closing your browser window, or setting ?_profile=0
-Then head to http://hostname:81 to view your profiles
-
 ## Possible Future Features
 
 * add Mailcatcher
 * add Vanish
-* add PageSpeed
 * add ElasticSearch

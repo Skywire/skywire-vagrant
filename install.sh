@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-echo "Checking vagrant version"
+echo "Checking Vagrant version"
 vagrant version
 
+echo "Checking for vagrant-hostupdater"
 if vagrant plugin list | grep -Fq "vagrant-hostsupdater"
 then
     #update
@@ -14,13 +15,13 @@ else
     vagrant plugin install vagrant-hostsupdater
 fi
 
-echo "Pulling latest version"
+echo "Pulling latest version of skywire-vagrant"
 git pull
 
 echo "Initialising and getting submodules"
 git submodule update --init
 
-echo "Type in the directory you want to install to (ie: /Users/tom/sites/harrys/) with trailing slash, also full directory please, don't use ~"
+echo "Type in the FULL PATH to the directory you want to install to with trailing slash, don't use '~' e.g. /Users/tom/sites/harrys/ "
 
 read directory
 
@@ -38,23 +39,23 @@ if [ -f ${directory}.gitignore ]; then
     fi
 fi
 
-echo "Removing any unesscassry files"
+echo "Removing any unnecessary files"
 cd $directory
 find . -name ".git" -exec rm -rf {} \;
 
-echo "Please type in the hostname to use. IE: vagrant.harrysoflondon.com"
+echo "Please type in the hostname to use e.g. vagrant.harrysoflondon.com"
 
 read hostname
 
-echo "Replacing hostname with $hostname"
+echo "Replacing default hostname with $hostname"
 sed -i '' "s/vagrant.site/$hostname/g" ./Vagrantfile
 sed -i '' "s/vagrant.site/$hostname/g" ./puppet/manifests/site.pp
 
-echo "Please type in PHP version. Either: 53,54,55,56"
+echo "Please type in PHP version. Either: 53, 54, 55 or 56"
 
 read php
 
-echo "updating PHP version"
+echo "Updating PHP version"
 sed -i '' "s/56/$php/g" puppet/manifests/site.pp
 
 echo "Finished OK"
