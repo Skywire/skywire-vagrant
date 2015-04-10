@@ -41,7 +41,7 @@ fi
 
 echo "Removing any unnecessary files"
 cd $directory
-find . -name ".git" -exec rm -rf {} \;
+find ./puppet -name ".git" -exec rm -rf {} \;
 
 echo "Please type in the hostname to use e.g. vagrant.harrysoflondon.com"
 
