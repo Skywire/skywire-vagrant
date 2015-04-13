@@ -3,6 +3,9 @@ $hostName = "vagrant.site" # e.g. vagrant.duchamplondon.com (also update this in
 $databaseName = "vagrant"
 $phpstormServerName = "Vagrant"
 $phpVersion = "56" # set to 53, 54, 55, 56
+$varnish = false # set to true to install varnish as well - version 3
+#I've left varnish in default configuration as I suspect each server will require it's own custom config, this will
+#include setting it up on port 80 and moving nginx across to something else
 
 # create a new run stage to ensure certain modules are included first
 stage {
@@ -32,8 +35,6 @@ Package {
     allow_virtual => true
 }
 
-
-
 if($phpVersion == '53'){
     $phpMid = ""
     $phpFolderStart = ""
@@ -54,4 +55,4 @@ if($phpVersion == '56'){
     $phpFolderStart = "/opt/remi/php56/root"
 }
 
-include baseconfig, nginx, php, percona, message, mailhog
+include baseconfig, nginx, php, percona, message, mailhog, varnish

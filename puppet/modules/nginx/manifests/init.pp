@@ -3,10 +3,6 @@
 # Installs NGINX and necessary modules. Sets config files.
 #
 class nginx {
-    notify {
-        "Checking Nginx":
-            loglevel => notice
-    }
 
     yumrepo {
         "nginx":

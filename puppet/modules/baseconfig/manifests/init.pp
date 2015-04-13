@@ -3,15 +3,6 @@
 # Performs initial configuration tasks for all Vagrant boxes.
 #
 class baseconfig {
-    #notify{
-    #    "Running Yum Update":
-    #        loglevel => notice
-    #}
-
-    #exec {
-    #    'yum update':
-    #        command => '/usr/bin/yum -y update';
-    #}
 
     host {
         'hostmachine':

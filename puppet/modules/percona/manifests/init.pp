@@ -3,10 +3,6 @@
 # Installs PERCONA and necessary modules. Sets config files.
 #
 class percona {
-    notify {
-        "Checking Percona":
-            loglevel => notice
-    }
 
     yumrepo {
         "percona-release":

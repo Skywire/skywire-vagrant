@@ -1,12 +1,5 @@
 class message {
     notify {
-        #"
-        #INFORMATION:
-        #SSH to vagrant: vagrant ssh
-        #DB username: root (no password)
-        #DB to use: vagrant
-        #Site: vagrant.site
-        #":
         "Info":
             message => "
             INFORMATION:
@@ -14,7 +7,10 @@ class message {
                 SSH info - username: vagrant, password: vagrant
                 DB username: root (no password)
                 DB to use: ${databaseName}
-                Site: ${hostName}",
+                Site: ${hostName}
+                PHP Version: ${phpVersion}
+                PHPStorm server name: ${phpstormServerName}
+                Varnish Enabled?: ${varnish}",
             loglevel => alert
     }
 }
