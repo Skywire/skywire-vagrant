@@ -46,6 +46,7 @@ To debug a command line script, run it as normal in the command line with PhpSto
 * Turn on profiling by adding `?_profile=1` to the end of a url
 * Turn off profiling by either closing your browser window or adding `?_profile=0` to the end of a url
 * Then head to port 81 of your site to view your profiles e.g. http://vagrant.duchamplondon.com:81
+* PHPStorm breaks during debugging on the header and footer. You can exclude these paths with this feature: https://www.jetbrains.com/phpstorm/help/skipped-paths.html
 
 ## MailHog
 
