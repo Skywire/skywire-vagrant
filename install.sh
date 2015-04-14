@@ -61,4 +61,13 @@ read php
 echo $'\n** Updating PHP version'
 sed -i '' "s/56/$php/g" puppet/manifests/site.pp
 
+echo $'\n** Do you want Varnish installed? Y/n'
+
+read varnish
+
+if [ varnish == 'Y' ]; then
+    echo $'\n** Setting Varnish'
+    sed -i '' "s/false/true/g" puppet/manifests/site.pp
+fi
+
 echo $'\nFinished OK'

@@ -58,7 +58,7 @@ To debug a command line script, run it as normal in the command line with PhpSto
 ####  Virtual Machine
 
 * IP Address: 192.168.10.10
-* Base Memory: 1024
+* Base Memory: 512
 * CPUs: 1
 
 #### SSH
