@@ -59,7 +59,7 @@ echo $'\n** Please type in PHP version. Either: 53, 54, 55 or 56:'
 read php
 
 echo $'\n** Updating PHP version'
-sed -i '' "s/56/$php/g" puppet/manifests/site.pp
+sed -i '' "s/\$phpVersion = \"56\"/\$phpVersion = \"$php\"/g" puppet/manifests/site.pp
 
 echo $'\n** Do you want Varnish installed? Y/n'
 
