@@ -69,34 +69,32 @@ class php {
         }
     }
 
-    if($phpVersion != '53'){
-        yumrepo {
-            "remi":
-                mirrorlist  => "http://rpms.famillecollet.com/enterprise/6/remi/mirror",
-                descr       => "Les RPM de remi pour Enterprise Linux 6 - \$basearch",
-                enabled     => 1,
-                gpgcheck    => 0,
-                before      => Package[
-                    "php$phpMid-devel",
-                    "php$phpMid-cli",
-                    "php$phpMid-fpm",
-                    "php$phpMid-pdo",
-                    "php$phpMid-gd",
-                    "php$phpMid-process",
-                    "php$phpMid-opcache",
-                    "php$phpMid-pecl-zip",
-                    "php$phpMid-mcrypt",
-                    "php$phpMid-xml",
-                    "php$phpMid-pecl-memcache",
-                    "php$phpMid-common",
-                    "php$phpMid-mbstring",
-                    "php$phpMid-soap",
-                    "php$phpMid-pecl-xdebug",
-                    "php$phpMid-pecl-imagick",
-                    "php$phpMid-pecl-xhprof",
-                    "php$phpMid-ioncube-loader"
-                ];
-        }
+    yumrepo {
+        "remi":
+            mirrorlist  => "http://rpms.famillecollet.com/enterprise/6/remi/mirror",
+            descr       => "Les RPM de remi pour Enterprise Linux 6 - \$basearch",
+            enabled     => 1,
+            gpgcheck    => 0,
+            before      => Package[
+                "php$phpMid-devel",
+                "php$phpMid-cli",
+                "php$phpMid-fpm",
+                "php$phpMid-pdo",
+                "php$phpMid-gd",
+                "php$phpMid-process",
+                "php$phpMid-opcache",
+                "php$phpMid-pecl-zip",
+                "php$phpMid-mcrypt",
+                "php$phpMid-xml",
+                "php$phpMid-pecl-memcache",
+                "php$phpMid-common",
+                "php$phpMid-mbstring",
+                "php$phpMid-soap",
+                "php$phpMid-pecl-xdebug",
+                "php$phpMid-pecl-imagick",
+                "php$phpMid-pecl-xhprof",
+                "php$phpMid-ioncube-loader"
+            ];
     }
 
     package {
