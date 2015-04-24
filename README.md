@@ -96,5 +96,4 @@ You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI 
 
 ## Possible Future Features
 
-* add Vanish
 * add ElasticSearch
