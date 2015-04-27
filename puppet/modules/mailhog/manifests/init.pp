@@ -16,7 +16,14 @@ class mailhog {
             owner  => 'root',
             group  => 'root',
             recurse => true,
-            ensure => 'directory'
+            ensure => 'directory',
+            require => Package[
+            "golang",
+            "mercurial",
+            "bzr",
+            "daemonize",
+            "ssmtp"
+            ]
     }
 
     exec {
@@ -26,12 +33,15 @@ class mailhog {
                 "/bin",
                 "/usr/bin"
             ],
+            require => File[
+            '/root/go'
+            ],
             cwd => '/root';
 
         "Setting Executable for MailHog executable":
             command => "chmod +x /root/go/bin/MailHog",
             require => Exec[
-                "Install mailhog"
+            "Install mailhog"
             ],
             path => [
                 "/bin",
@@ -64,7 +74,7 @@ class mailhog {
             ensure => "running",
             require => [
                 File[
-                    '/etc/init.d/mailhog'
+                '/etc/init.d/mailhog'
                 ]
             ]
     }
