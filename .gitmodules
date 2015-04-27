@@ -9,4 +9,4 @@
 	url = git@github.com:Skywire/Config-files-nginx.git
 [submodule "puppet/modules/nginx/files/xhprof"]
 	path = puppet/modules/nginx/files/xhprof
-	url = https://github.com/preinheimer/xhprof.git
+	url = git@github.com:preinheimer/xhprof.git
