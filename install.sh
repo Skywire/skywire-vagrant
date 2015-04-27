@@ -61,6 +61,13 @@ read php
 echo $'\n** Updating PHP version'
 sed -i '' "s/\$phpVersion = \"56\"/\$phpVersion = \"$php\"/g" puppet/manifests/site.pp
 
+echo $'\n** Please type in the PHPStorm Server name to use. eg: Vagrant.Harrys'
+
+read phpstorm
+
+echo $'\n** Replacing PHPStorm server name with $phpstorm'
+sed -i '' "s/\$phpstormServerName = \"Vagrant\"/\$phpstormServerName = \"$phpstorm\"/g" ./puppet/manifests/site.pp
+
 echo $'\n** Do you want Varnish installed? Y/n'
 
 read varnish
