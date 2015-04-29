@@ -18,11 +18,11 @@ class mailhog {
             recurse => true,
             ensure => 'directory',
             require => Package[
-            "golang",
-            "mercurial",
-            "bzr",
-            "daemonize",
-            "ssmtp"
+                "golang",
+                "mercurial",
+                "bzr",
+                "daemonize",
+                "ssmtp"
             ]
     }
 
@@ -41,7 +41,7 @@ class mailhog {
         "Setting Executable for MailHog executable":
             command => "chmod +x /root/go/bin/MailHog",
             require => Exec[
-            "Install mailhog"
+                "Install mailhog"
             ],
             path => [
                 "/bin",
@@ -53,6 +53,16 @@ class mailhog {
             command => "sed -i 's/sendmail_path = \\/usr\\/sbin\\/sendmail -t -i/sendmail_path = \\/usr\\/sbin\\/ssmtp -t/g' $phpFolderStart/etc/php.ini",
             require => Package["php$phpMid-fpm"],
             before => Service["php$phpMid-fpm"],
+            path => [
+                "/bin"
+            ],
+            cwd => '/';
+
+        "Update SSMTP to push to mailhog":
+            command => "sed -i 's/mailhub=mailhub/mailhub=localhost:1025/g' /etc/ssmtp/ssmtp.conf",
+            require => Exec[
+                "Install mailhog"
+            ],
             path => [
                 "/bin"
             ],
