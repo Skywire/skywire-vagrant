@@ -212,7 +212,7 @@ class php {
         }
     }
 
-    /*exec {
+    exec {
         "Updating PHP User":
             command => "sed -i 's/user = apache/user = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf",
             require => Package["php$phpMid-fpm"],
@@ -230,5 +230,5 @@ class php {
                 "/bin"
             ],
             cwd => '/',
-    }*/
+    }
 }
