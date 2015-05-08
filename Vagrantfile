@@ -6,10 +6,11 @@ Vagrant.configure("2") do |config|
     config.vm.host_name = "vagrant.site"
     config.vm.box       = "chef/centos-6.6"
     config.vm.network :private_network, ip: "192.168.33.10"
+    config.vm.synced_folder ".", "/vagrant", owner: 48, group: 48
 
     config.vm.provider "virtualbox" do |v|
-        v.memory = 512
-        #Set this higher if you are using varnish etc
+        v.memory = 750
+        #Set memory higher if you are using varnish etc
         #v.cpus = 2
         #I can't imagine you needing to set this, but i;ve added it as a comment just in case
     end

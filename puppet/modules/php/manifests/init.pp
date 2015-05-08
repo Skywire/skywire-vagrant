@@ -211,24 +211,4 @@ class php {
                 ]
         }
     }
-
-    exec {
-        "Updating PHP User":
-            command => "sed -i 's/user = apache/user = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf",
-            require => Package["php$phpMid-fpm"],
-            path => [
-                "/bin"
-            ],
-            cwd => '/',
-    }
-
-    exec {
-        "Updating PHP Group":
-            command => "sed -i 's/group = apache/group = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf",
-            require => Package["php$phpMid-fpm"],
-            path => [
-                "/bin"
-            ],
-            cwd => '/',
-    }
 }
