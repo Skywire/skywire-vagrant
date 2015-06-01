@@ -59,6 +59,11 @@ class baseconfig {
                 ];
     }
 
+    service {
+        "puppet":
+            enable => true,
+    }
+
     exec {
         "Install n98":
             command => "wget https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar; chmod +x ./n98-magerun.phar; mv ./n98-magerun.phar /usr/local/bin/",
@@ -67,10 +72,8 @@ class baseconfig {
             path => [
                 "/usr/bin",
                 "/bin"
-            ]
-    }
+            ];
 
-    exec {
         "Install Node Repo":
             command => "curl -sL https://rpm.nodesource.com/setup | bash -",
             creates => "/etc/yum.repo.d/nodesource-el.repo",
@@ -78,25 +81,16 @@ class baseconfig {
                 "/usr/bin",
                 "/bin"
             ],
-            before => Package["nodejs"]
-    }
+            before => Package["nodejs"];
 
-    service {
-        "puppet":
-            enable => true,
-    }
-
-    exec {
         "Update xdebug hostname in bash profile":
             command => "sed -i 's/serverName=Vagrant/serverName=$phpstormServerName/g' /home/vagrant/.bash_profile",
             require => File['/home/vagrant/.bash_profile'],
             path => [
                 "/bin"
             ],
-            cwd => '/'
-    }
+            cwd => '/';
 
-    exec {
         "Link Web DIR":
             command => "ln -s /vagrant /home/vagrant/site",
             cwd => "/home/vagrant",
@@ -104,10 +98,8 @@ class baseconfig {
             path => [
                 "/usr/bin",
                 "/bin"
-            ]
-    }
+            ];
 
-    exec {
         "Install Gulp":
             command => "npm install --global gulp",
             creates => "/usr/bin/gulp",

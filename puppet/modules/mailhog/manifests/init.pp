@@ -34,7 +34,7 @@ class mailhog {
                 "/usr/bin"
             ],
             require => File[
-            '/root/go'
+                '/root/go'
             ],
             cwd => '/root';
 
@@ -84,7 +84,7 @@ class mailhog {
             ensure => "running",
             require => [
                 File[
-                '/etc/init.d/mailhog'
+                    '/etc/init.d/mailhog'
                 ]
             ]
     }
