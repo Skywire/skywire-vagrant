@@ -16,7 +16,6 @@ class baseconfig {
             descr       => "Extra Packages for Enterprise Linux 6 - \$basearch",
             enabled     => 1,
             gpgcheck    => 0;
-
     }
 
     file {
@@ -50,7 +49,8 @@ class baseconfig {
             "vim",
             "htop",
             "git",
-            "pv"
+            "pv",
+            "nodejs"
         ]:
             ensure  => present,
             require =>
@@ -70,6 +70,17 @@ class baseconfig {
             ]
     }
 
+    exec {
+        "Install Node Repo":
+            command => "curl -sL https://rpm.nodesource.com/setup | bash -",
+            creates => "/etc/yum.repo.d/nodesource-el.repo",
+            path    => [
+                "/usr/bin",
+                "/bin"
+            ],
+            before => Package["nodejs"]
+    }
+
     service {
         "puppet":
             enable => true,
@@ -82,7 +93,7 @@ class baseconfig {
             path => [
                 "/bin"
             ],
-            cwd => '/',
+            cwd => '/'
     }
 
     exec {
@@ -90,6 +101,16 @@ class baseconfig {
             command => "ln -s /vagrant /home/vagrant/site",
             cwd => "/home/vagrant",
             creates => "/home/vagrant/site",
+            path => [
+                "/usr/bin",
+                "/bin"
+            ]
+    }
+
+    exec {
+        "Install Gulp":
+            command => "npm install --global gulp",
+            creates => "/usr/bin/gulp",
             path => [
                 "/usr/bin",
                 "/bin"
