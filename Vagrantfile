@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
     config.vm.host_name = "vagrant.site"
     config.vm.box       = "chef/centos-6.6"
     config.vm.network :private_network, ip: "192.168.33.10"
-    config.vm.synced_folder ".", "/vagrant", nfs: true
+    config.vm.synced_folder ".", "/vagrant", owner: 48, group: 48
 
     config.vm.provider "virtualbox" do |v|
         host = RbConfig::CONFIG['host_os']
