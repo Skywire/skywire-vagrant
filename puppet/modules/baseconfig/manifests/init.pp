@@ -106,6 +106,7 @@ class baseconfig {
             path => [
                 "/usr/bin",
                 "/bin"
-            ]
+            ],
+            require => Package["nodejs"]
     }
 }
