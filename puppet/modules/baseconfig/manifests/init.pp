@@ -100,6 +100,14 @@ class baseconfig {
                 "/bin"
             ];
 
+        "Update NPM":
+            command => "npm install npm -g",
+            path => [
+                "/usr/bin",
+                "/bin"
+            ],
+            require => Package["nodejs"];
+
         "Install Gulp":
             command => "npm install --global gulp",
             creates => "/usr/bin/gulp",
