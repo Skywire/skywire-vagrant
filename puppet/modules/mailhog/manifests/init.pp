@@ -12,7 +12,7 @@ class mailhog {
     }
 
     file {
-        '/root/go':
+        "/root/go":
             owner  => 'root',
             group  => 'root',
             recurse => true,
@@ -23,7 +23,14 @@ class mailhog {
                 "bzr",
                 "daemonize",
                 "ssmtp"
-            ]
+            ];
+
+        "/etc/init.d/mailhog":
+            owner  => 'root',
+            group  => 'root',
+            mode   => '0655',
+            require => Exec["Setting Executable for MailHog executable"],
+            source => 'puppet:///modules/mailhog/mailhog.init';
     }
 
     exec {
@@ -67,15 +74,6 @@ class mailhog {
                 "/bin"
             ],
             cwd => '/';
-    }
-
-    file {
-        "/etc/init.d/mailhog":
-            owner  => 'root',
-            group  => 'root',
-            mode   => '0655',
-            require => Exec["Setting Executable for MailHog executable"],
-            source => 'puppet:///modules/mailhog/mailhog.init';
     }
 
     service {

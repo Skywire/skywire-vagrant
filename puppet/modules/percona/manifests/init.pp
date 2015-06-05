@@ -65,5 +65,5 @@ class percona {
                 "/usr/sbin"
             ],
             cwd => '/';
-}
+    }
 }

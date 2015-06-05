@@ -61,7 +61,7 @@ class baseconfig {
 
     service {
         "puppet":
-            enable => true,
+            enable => true;
     }
 
     exec {
@@ -107,6 +107,15 @@ class baseconfig {
                 "/usr/bin",
                 "/bin"
             ],
-            require => Package["nodejs"]
+            require => Package["nodejs"];
+
+        "Install scss-lint":
+            command => "gem install scss_lint",
+            creates => "",
+            path => [
+                "/usr/bin",
+                "/bin"
+            ],
+            require => Exec["Install Gulp"];
     }
 }

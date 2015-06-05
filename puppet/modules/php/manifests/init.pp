@@ -196,7 +196,23 @@ class php {
                 "/usr/bin",
                 "/bin"
             ],
-            require => Package["php$phpMid-devel"]
+            require => Package["php$phpMid-devel"];
+
+        "Updating PHP User":
+            command => "sed -i 's/user = apache/user = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf",
+            require => Package["php$phpMid-fpm"],
+            path => [
+                "/bin"
+            ],
+            cwd => '/';
+
+        "Updating PHP Group":
+            command => "sed -i 's/group = apache/group = vagrant/g' $phpFolderStart/etc/php-fpm.d/www.conf",
+            require => Package["php$phpMid-fpm"],
+            path => [
+                "/bin"
+            ],
+            cwd => '/';
     }
 
     if($phpVersion != '53') {

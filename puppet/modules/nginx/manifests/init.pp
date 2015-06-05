@@ -5,7 +5,7 @@
 class nginx {
 
     yumrepo {
-        "nginx":
+        'nginx':
             baseurl     => "http://nginx.org/packages/centos/\$releasever/\$basearch/",
             descr       => "Nginx Repo",
             enabled     => 1,
