@@ -115,7 +115,7 @@ class baseconfig {
                 "/usr/bin",
                 "/bin"
             ],
-            require => Package["nodejs"];
+            require => Exec["Update NPM"];
 
         "Install scss-lint":
             command => "gem install scss_lint",
