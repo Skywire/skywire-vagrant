@@ -49,8 +49,7 @@ class baseconfig {
             "vim",
             "htop",
             "git",
-            "pv",
-            "nodejs"
+            "pv"
         ]:
             ensure  => present,
             require =>
@@ -74,15 +73,6 @@ class baseconfig {
                 "/bin"
             ];
 
-        "Install Node Repo":
-            command => "curl -sL https://rpm.nodesource.com/setup | bash -",
-            creates => "/etc/yum.repo.d/nodesource-el.repo",
-            path    => [
-                "/usr/bin",
-                "/bin"
-            ],
-            before => Package["nodejs"];
-
         "Update xdebug hostname in bash profile":
             command => "sed -i 's/serverName=Vagrant/serverName=$phpstormServerName/g' /home/vagrant/.bash_profile",
             require => File['/home/vagrant/.bash_profile'],
@@ -99,31 +89,5 @@ class baseconfig {
                 "/usr/bin",
                 "/bin"
             ];
-
-        "Update NPM":
-            command => "npm install npm -g",
-            path => [
-                "/usr/bin",
-                "/bin"
-            ],
-            require => Package["nodejs"];
-
-        "Install Gulp":
-            command => "npm install --global gulp",
-            creates => "/usr/bin/gulp",
-            path => [
-                "/usr/bin",
-                "/bin"
-            ],
-            require => Exec["Update NPM"];
-
-        "Install scss-lint":
-            command => "gem install scss_lint",
-            creates => "",
-            path => [
-                "/usr/bin",
-                "/bin"
-            ],
-            require => Exec["Install Gulp"];
     }
 }
