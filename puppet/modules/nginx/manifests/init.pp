@@ -25,7 +25,7 @@ class nginx {
 
     exec {
         'create_self_signed_sslcert':
-            command => "openssl req -newkey rsa:2048 -nodes -keyout site.key  -x509 -days 365 -out site.crt -subj '/CN=${hostName}'",
+            command => "openssl req -newkey rsa:2048 -nodes -keyout site.key  -x509 -days 365 -sha256 -out site.crt -subj '/CN=${hostName}'",
             cwd     => '/etc/ssl',
             creates => [
                 "/etc/ssl/site.key",
