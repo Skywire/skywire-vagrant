@@ -14,7 +14,8 @@ class nginx {
 
     package {
         [
-            'nginx'
+            'nginx',
+            'graphviz*'
         ]:
             ensure  => present,
             require =>
