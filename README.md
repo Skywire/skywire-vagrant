@@ -48,6 +48,9 @@ To debug a command line script, run it as normal in the command line with PhpSto
 * Then head to port 81 of your site to view your profiles e.g. http://vagrant.duchamplondon.com:81
 * PHPStorm breaks during debugging on the header and footer. You can change this bu turning off the two "Force break ..." options in PHP/Debug in the options
 
+* Wall Time = Time in function and decendants
+* Exclusive Wall Time = Time in function
+
 ## MailHog
 
 * Capture email being sent from the server
