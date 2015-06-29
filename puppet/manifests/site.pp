@@ -4,6 +4,7 @@ $databaseName = "vagrant"
 $phpstormServerName = "Vagrant"
 $phpVersion = "56" # set to 53, 54, 55, 56
 $varnish = false # set to true to install varnish as well - version 3
+$elasticSearch = false # set to true to install elsaticSearch as well
 #I've left varnish in default configuration as I suspect each server will require it's own custom config, this will
 #include setting it up on port 80 and moving nginx across to something else
 
@@ -55,4 +56,4 @@ if($phpVersion == '56'){
     $phpFolderStart = "/opt/remi/php56/root"
 }
 
-include baseconfig, nginx, php, percona, message, mailhog, varnish
+include baseconfig, nginx, php, percona, message, mailhog, varnish, elasticsearch
