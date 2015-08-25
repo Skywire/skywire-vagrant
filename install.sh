@@ -77,4 +77,7 @@ if [ varnish == 'Y' ]; then
     sed -i '' "s/false/true/g" puppet/manifests/site.pp
 fi
 
+echo $'\n** Force adding puppet directory to git'
+git add -f puppet
+
 echo $'\nFinished OK'
