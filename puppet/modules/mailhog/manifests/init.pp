@@ -35,7 +35,8 @@ class mailhog {
 
     exec {
         "Install mailhog":
-            command => "bash -c 'export GOPATH=/root/go; go get github.com/mailhog/MailHog'",
+            environment => ["GOPATH=/root/go"],
+            command => "go get github.com/mailhog/MailHog",
             path => [
                 "/bin",
                 "/usr/bin"
