@@ -37,6 +37,12 @@ class baseconfig {
             mode   => '0644',
             source => 'puppet:///modules/baseconfig/git/.gitconfig';
 
+        '/home/vagrant/.gitmessage.txt':
+            owner  => 'vagrant',
+            group  => 'vagrant',
+            mode   => '0644',
+            source => 'puppet:///modules/baseconfig/git/.gitmessage.txt';
+
         '/home/vagrant/.gitignore_global':
             owner  => 'vagrant',
             group  => 'vagrant',
