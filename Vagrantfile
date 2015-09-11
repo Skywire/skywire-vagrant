@@ -4,7 +4,7 @@ end
 
 Vagrant.configure("2") do |config|
     config.vm.host_name = "vagrant.site"
-    config.vm.box       = "chef/centos-6.6"
+    config.vm.box       = "valguss2001/Skywire_Centos6"
     config.vm.network :private_network, ip: "192.168.33.10"
     config.vm.synced_folder ".", "/vagrant"
 
@@ -27,8 +27,6 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--memory", mem]
         v.customize ["modifyvm", :id, "--cpus", cpus]
     end
-
-    config.vm.provision "shell", path: "puppet/install.sh"
 
     config.vm.provision "puppet" do |puppet|
         puppet.manifests_path = "puppet/manifests"
