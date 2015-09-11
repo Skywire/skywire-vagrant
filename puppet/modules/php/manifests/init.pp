@@ -118,11 +118,7 @@ class php {
             "php$phpMid-pecl-xhprof",
             "php$phpMid-ioncube-loader"
         ]:
-            ensure  => present,
-            require =>
-                [
-                    Yumrepo["epel"]
-                ];
+            ensure  => present
     }
 
     if($phpVersion == '53'){
@@ -213,6 +209,15 @@ class php {
                 "/bin"
             ],
             cwd => '/';
+
+        "Update n98":
+            command => "/usr/local/bin/n98-magerun.phar self-update",
+            require => Package["php$phpMid-fpm"],
+            cwd => "/root",
+            path => [
+                "/usr/bin",
+                "/bin"
+            ];
     }
 
     if($phpVersion != '53') {

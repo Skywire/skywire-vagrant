@@ -56,4 +56,4 @@ if($phpVersion == '56'){
     $phpFolderStart = "/opt/remi/php56/root"
 }
 
-include baseconfig, nginx, php, percona, message, mailhog, varnish, elasticsearch
+include baseconfig, message, php, varnish, elasticsearch, nginx

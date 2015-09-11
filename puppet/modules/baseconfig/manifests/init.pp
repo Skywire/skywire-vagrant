@@ -9,15 +9,6 @@ class baseconfig {
             ip => '192.168.0.1';
     }
 
-##get yum repos
-    yumrepo {
-        "epel":
-            mirrorlist  => "https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=\$basearch",
-            descr       => "Extra Packages for Enterprise Linux 6 - \$basearch",
-            enabled     => 1,
-            gpgcheck    => 0;
-    }
-
     file {
         '/root/.bashrc':
             owner  => 'root',
@@ -50,35 +41,12 @@ class baseconfig {
             source => 'puppet:///modules/baseconfig/git/.gitignore_global';
     }
 
-    package {
-        [
-            "vim",
-            "htop",
-            "git",
-            "pv"
-        ]:
-            ensure  => present,
-            require =>
-                [
-                    Yumrepo["epel"]
-                ];
-    }
-
     service {
         "puppet":
             enable => true;
     }
 
     exec {
-        "Install n98":
-            command => "wget https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar; chmod +x ./n98-magerun.phar; mv ./n98-magerun.phar /usr/local/bin/",
-            cwd => "/root",
-            creates => "/usr/local/bin/n98-magerun.phar",
-            path => [
-                "/usr/bin",
-                "/bin"
-            ];
-
         "Update xdebug hostname in bash profile":
             command => "sed -i 's/serverName=Vagrant/serverName=$phpstormServerName/g' /home/vagrant/.bash_profile",
             require => File['/home/vagrant/.bash_profile'],
