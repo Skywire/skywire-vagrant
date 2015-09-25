@@ -8,6 +8,8 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, ip: "192.168.33.10"
     config.vm.synced_folder ".", "/vagrant"
 
+    #config.ssh.insert_key = false
+
     config.vm.provider "virtualbox" do |v|
         host = RbConfig::CONFIG['host_os']
         # Give VM 1/4 system memory & access to all cpu cores on the host

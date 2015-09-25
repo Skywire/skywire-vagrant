@@ -100,3 +100,22 @@ You may want to install [Vagrant Manager](http://vagrantmanager.com/) for a GUI 
 ## Possible Future Features
 
 * add ElasticSearch
+
+## Updating the vagrant box
+
+* Comment out the include includes in the main manifest/init.pp
+* run the following in the vagrant box:
+    * `wget https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -O .ssh/authorized_keys`
+    * `chmod 700 .ssh`
+    * `chmod 600 .ssh/authorized_keys`
+    * `chown -R vagrant:vagrant .ssh`
+    * `sudo rm /etc/udev/rules.d/70-persistent-net.rules`
+* Also trim down the .bash_profile file so that things aren't interefing
+* Then shut the vagrant box down with the following in the Vagrantfile
+    * config.ssh.insert_key = false
+* Check where the ssh key is currently with:
+    * `vagrant ssh-config`
+* and delete the SSH key
+* Now you can package up the vagrant box with:
+    * `vagrant package --base skywire-vagrant_default_1443182016420_24825 --output ~/Desktop/skywire1.box`
+* Upload this to https://atlas.hashicorp.com/valguss2001
