@@ -2,9 +2,7 @@
 
 A standardised development environment With Vagrant/Puppet
 
-The box has Percona, Nginx and PHP5.5-fpm installed and is based on the Nimbus 'Super Brew' server from Harrys of London.
-
-You can connect to the box in your browser via http://vagrant.site and https://vagrant.site if you haven't change the default config.
+The box has Percona, Nginx and PHP installed and is based on the Nimbus 'Super Brew' server from Harrys of London.
 
 The https site already has a self signed certificate setup.
 
@@ -14,11 +12,7 @@ Download/Update Vagrant from: http://www.vagrantup.com/downloads
 
 Download/Update Virtualbox from: https://www.virtualbox.org/wiki/Downloads
 
-Install the [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater) which will auto add the Vagrant box's defined hostname and IP to your hosts file and remove it again when needed.:
-
-`vagrant plugin install vagrant-hostsupdater`
-
-Ignore `/.vagrant` in your projects `.gitignore`.
+Use the installer at `install.sh`.
 
 ## Configuration
 
